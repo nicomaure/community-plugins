@@ -5,9 +5,9 @@ plugin_api = 24
 author = "nicomaure.com.ar"
 license = "MIT"
 dependencies = ["alacritty", "agy"]
-tags = ["ai", "utility", "bar", "niri", "productivity"]
+tags = ["ai", "utility", "bar", "productivity"]
 icon = "sparkles"
-description = "Quick bar launcher for Antigravity Agent CLI (agy) with a floating HUD window in Niri."
+description = "Quick bar launcher for the Antigravity Agent CLI (agy)."
 
 [[setting]]
 key = "show_label"
