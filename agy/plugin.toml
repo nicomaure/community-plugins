@@ -1,7 +1,7 @@
 id = "nicomaure/agy"
 name = "Antigravity AGY"
 version = "1.0.0"
-plugin_api = 32
+plugin_api = 24
 author = "nicomaure.com.ar"
 license = "MIT"
 dependencies = ["alacritty", "agy"]
