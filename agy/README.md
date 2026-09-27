@@ -1,6 +1,6 @@
 # Antigravity AGY
 
-Quick bar launcher for the Antigravity Agent CLI (`agy`) with dedicated floating HUD terminal support in Niri.
+Quick bar launcher for the Antigravity Agent CLI (`agy`) with optional floating terminal support in Niri.
 
 ## Plugin
 
@@ -16,7 +16,7 @@ Quick bar launcher for the Antigravity Agent CLI (`agy`) with dedicated floating
 
 If either is missing, the widget shows an error notification instead of launching.
 
-For the floating HUD window on Niri, add the window rule in `~/.config/niri/cfg/rules.kdl`:
+For optional floating-window behavior on Niri, add this window rule manually to `~/.config/niri/cfg/rules.kdl`:
 
 ```kdl
 // BEGIN AGY_NIRI_NOCTALIA
@@ -31,12 +31,14 @@ window-rule {
 // END AGY_NIRI_NOCTALIA
 ```
 
+The plugin does not modify compositor configuration.
+
 ## Usage
 
 Add the **Antigravity AGY** widget to your Noctalia Bar under **Settings** (Mod+Shift+S) -> **Bar** -> **Widgets**.
 
-- **Left click:** Launches `agy` in your project folder (`~/Proyectos/agy` if available) inside a floating Alacritty terminal.
-- **Right click:** Launches `agy` in your user home directory (`$HOME`).
+- **Left click:** Launches `agy` in the configured project directory. If that directory does not exist, the plugin falls back to `~/Proyectos/agy` when available, and then to `$HOME`.
+- **Right click:** Launches `agy` in your home directory (`$HOME`).
 
 ## Settings
 
@@ -47,8 +49,8 @@ Add the **Antigravity AGY** widget to your Noctalia Bar under **Settings** (Mod+
 
 ## Notes
 
-- **Process Lifecycle:** The widget runs as a lightweight Luau bar entry with 0% CPU consumption while idle. It only spawns Alacritty upon interaction. When the terminal window is closed, all resources are completely freed.
-- **Spawned Processes:** On click it launches `alacritty` (argv-exec, no shell) running `agy`. No network calls, no filesystem writes.
-- **Compositor Support:** Designed for Niri Wayland Compositor, but functions on any Wayland compositor with Alacritty installed.
-- **Privacy & Security:** Runs entirely locally without network telemetry or remote code execution.
-- **Full Desktop Integration:** This plugin pairs with the `cachyos-niri-noctalia` agent skill — it teaches `agy` how to diagnose and configure your Niri + Noctalia desktop safely (read-only diagnostics, backup-before-edit rules). Get it plus the automated Niri window rule and desktop launcher from the companion repository: [nicomaure/agy_niri_noctalia](https://github.com/nicomaure/agy_niri_noctalia).
+- **Process Lifecycle:** The widget remains idle until the user clicks it. It launches Alacritty and `agy` only after interaction.
+- **Spawned Processes:** On click it launches `alacritty` with arguments to run `agy`. It does not invoke a shell.
+- **Filesystem and Network:** The plugin does not write files or make network calls. It checks whether configured commands and directories exist before launching.
+- **Compositor Support:** Tested on Niri. The widget may also work on other Wayland compositors, but the floating-window rule in this README is specific to Niri.
+- **Privacy & Security:** The plugin runs locally and does not download or execute remote code.
