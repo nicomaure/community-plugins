@@ -1,0 +1,28 @@
+id = "nicomaure/agy"
+name = "Antigravity AGY"
+version = "1.0.0"
+plugin_api = 32
+author = "nicomaure.com.ar"
+license = "MIT"
+dependencies = ["alacritty", "agy"]
+tags = ["ai", "utility", "bar", "niri", "productivity"]
+icon = "sparkles"
+description = "Quick bar launcher for Antigravity Agent CLI (agy) with a floating HUD window in Niri."
+
+[[setting]]
+key = "show_label"
+type = "bool"
+label_key = "settings.show_label.label"
+description_key = "settings.show_label.description"
+default = true
+
+[[setting]]
+key = "project_dir"
+type = "string"
+label_key = "settings.project_dir.label"
+description_key = "settings.project_dir.description"
+default = "~/Proyectos/agy"
+
+[[widget]]
+id = "bar"
+entry = "bar.luau"
